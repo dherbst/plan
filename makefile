@@ -20,8 +20,8 @@ lint:
 
 lint-in-container:
 	go get -u golang.org/x/lint/golint
-	golint github.com/dherbst/plan
-	golint github.com/dherbst/plan/plan/...
+	golint github.com/dherbst/plan/...
+	golint github.com/dherbst/plan/cmd/plan/...
 
 sec:
 	docker run -it --rm -v ${PWD}:/go/src/github.com/dherbst/plan -w /go/src/github.com/dherbst/plan ${GOLANG} make sec-in-container
