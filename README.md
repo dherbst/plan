@@ -1,6 +1,8 @@
 # plan
 Command line tool for creating plans.
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/dherbst/plan?style=flat-square)](https://goreportcard.com/report/github.com/dherbst/plan)
+
 ## Commands
 
 ### Until - `plan until 2020-01-20`
