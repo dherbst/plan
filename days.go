@@ -64,5 +64,14 @@ func TimeUntil(targetarg string) (*UntilResult, error) {
 		Days:     int(duration.Hours() / 24),
 	}
 
+	for today := time.Now(); today.Before(target); today = today.AddDate(0, 0, 1) {
+		_, observedHoliday, _ := c.IsHoliday(today)
+		if observedHoliday {
+			result.Holidays++
+		} else if c.IsWorkday(today) {
+			result.WorkingDays++
+		}
+	}
+
 	return result, nil
 }
