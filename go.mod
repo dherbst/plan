@@ -1,4 +1,4 @@
-module plan
+module github.com/dherbst/plan
 
 go 1.15
 

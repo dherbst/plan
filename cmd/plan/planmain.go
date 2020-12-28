@@ -12,7 +12,8 @@ var funcMap map[string]func(context.Context)
 
 func init() {
 	funcMap = map[string]func(context.Context){
-		"until": Until,
+		"until":   Until,
+		"version": Version,
 	}
 }
 
@@ -34,7 +35,13 @@ plan version              ; print out version information
 
 // Until prints the days until a specified date in format 2006-01-02.
 func Until(ctx context.Context) {
-	fmt.Printf("\n")
+	duration, err := plan.TimeUntil(flag.Arg(1))
+	if err != nil {
+		fmt.Printf("Error: %v\n", err)
+		return
+	}
+	days := int(duration.Hours() / 24)
+	fmt.Printf("%v days\n", days)
 }
 
 func main() {
