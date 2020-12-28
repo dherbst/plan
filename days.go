@@ -3,6 +3,9 @@ package plan
 import (
 	"fmt"
 	"time"
+
+	"github.com/rickar/cal/v2"
+	"github.com/rickar/cal/v2/us"
 )
 
 // UntilResult contains the days between now and then.
@@ -32,6 +35,27 @@ func TimeUntil(targetarg string) (*UntilResult, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	c := cal.NewBusinessCalendar()
+	DayAfterThanksgiving := &cal.Holiday{
+		Name:    "Day After Thanksgiving",
+		Type:    cal.ObservancePublic,
+		Month:   time.November,
+		Weekday: time.Friday,
+		Offset:  5,
+		Func:    cal.CalcWeekdayOffset,
+	}
+	c.AddHoliday(
+		us.NewYear,
+		us.MlkDay,
+		us.PresidentsDay,
+		us.MemorialDay,
+		us.IndependenceDay,
+		us.LaborDay,
+		us.ThanksgivingDay,
+		DayAfterThanksgiving,
+		us.ChristmasDay,
+	)
 
 	duration := time.Until(target)
 	result := &UntilResult{
