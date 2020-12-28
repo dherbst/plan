@@ -6,7 +6,7 @@ GOOS := darwin
 VERSION := $(shell git rev-parse --short HEAD)
 TODAY := $(shell date "+%Y-%m-%d-%H:%S-%Z")
 
-all: clean pull test build install
+all: clean pull lint sec test build install
 
 pull:
 	docker pull $(GOLANG)

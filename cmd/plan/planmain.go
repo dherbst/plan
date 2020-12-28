@@ -35,13 +35,12 @@ plan version              ; print out version information
 
 // Until prints the days until a specified date in format 2006-01-02.
 func Until(ctx context.Context) {
-	duration, err := plan.TimeUntil(flag.Arg(1))
+	result, err := plan.TimeUntil(flag.Arg(1))
 	if err != nil {
 		fmt.Printf("Error: %v\n", err)
 		return
 	}
-	days := int(duration.Hours() / 24)
-	fmt.Printf("%v days\n", days)
+	fmt.Printf("%v\n", result)
 }
 
 func main() {
