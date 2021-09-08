@@ -27,7 +27,7 @@ func Usage(ctx context.Context) {
 	fmt.Printf(`
 Usage:
 
-plan until <2006-01-01>   ; number of days until specified date.
+plan until 2023-01-21     ; number of days until specified date.
 plan version              ; print out version information
 `)
 
